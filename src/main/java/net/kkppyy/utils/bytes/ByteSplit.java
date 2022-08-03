@@ -1,4 +1,4 @@
-package com.kkppyy.utils.bytes;
+package net.kkppyy.utils.bytes;
 
 public class ByteSplit {
 	public static byte[] byteSplit(int off, int len, byte[] bytes) {

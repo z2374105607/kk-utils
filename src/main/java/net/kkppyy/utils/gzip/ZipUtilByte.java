@@ -1,4 +1,4 @@
-package com.kkppyy.utils.gzip;
+package net.kkppyy.utils.gzip;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

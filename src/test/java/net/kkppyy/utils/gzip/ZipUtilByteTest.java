@@ -1,12 +1,12 @@
-package com.kkppyy.utils.gzip;
+package net.kkppyy.utils.gzip;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.Test;
 
-import com.kkppyy.utils.file.ReadbytesUtil;
-import com.kkppyy.utils.file.WriteBytesUtil;
+import net.kkppyy.utils.file.ReadbytesUtil;
+import net.kkppyy.utils.file.WriteBytesUtil;
 
 
 public class ZipUtilByteTest {

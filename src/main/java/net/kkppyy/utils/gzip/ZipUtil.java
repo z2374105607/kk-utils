@@ -1,4 +1,4 @@
-package com.kkppyy.utils.gzip;
+package net.kkppyy.utils.gzip;
 
 import org.apache.tools.zip.ZipEntry;
 import org.apache.tools.zip.ZipFile;

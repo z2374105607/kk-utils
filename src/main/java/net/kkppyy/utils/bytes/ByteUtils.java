@@ -1,4 +1,4 @@
-package com.kkppyy.utils.bytes;
+package net.kkppyy.utils.bytes;
 
 import java.util.List;
 

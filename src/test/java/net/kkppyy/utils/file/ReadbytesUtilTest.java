@@ -1,4 +1,4 @@
-package com.kkppyy.utils.file;
+package net.kkppyy.utils.file;
 
 import org.junit.Test;
 
