@@ -4,10 +4,9 @@ import java.util.List;
 
 public class ByteUtils {
 	/**
-	 * @Title: sysCopy 
-	 * @Description: 合并多个byte[]内容
+	 *  @Description sysCopy 合并多个byte[]内容
 	 *  @param srcArrays 
-	 *  @return @return byte[] 返回类型 
+	 *  @return byte[] 返回类型 
 	 *  @throws
 	 */
 	public static byte[] sysCopy(List<byte[]> srcArrays) {
@@ -27,8 +26,7 @@ public class ByteUtils {
 	/**
 	 * @Title: bytes2HexString 
 	 * @Description: byte[]转换16进制
-	 *  @param
-	 * b 
+	 * @param
 	 * @return @return String 返回类型 
 	 * @throws
 	 */
