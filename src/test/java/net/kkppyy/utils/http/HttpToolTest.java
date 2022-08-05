@@ -15,7 +15,9 @@ import org.junit.Test;
 public class HttpToolTest {
 	@Test
 	public void sendGetTest(){
-		System.out.println(HttpTool.sendGet("http://www.rebim.cn"));
+		for (int i = 0; i < 100; i++) {
+			System.out.println(HttpTool.sendGet("http://172.16.0.222:8080/sofa/QRCode/getQRName?qid=424524cdc86148829548662935f83179"));
+		}
 	}
 	@Test
 	public void sendPostTest(){
