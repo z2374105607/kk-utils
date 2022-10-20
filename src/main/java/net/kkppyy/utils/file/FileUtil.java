@@ -28,7 +28,7 @@ public class FileUtil {
 
         /*查找后缀名*/
         File[] subFolders = folder.listFiles(new FileFilter() {
-            @Override
+			/* @Override */
             public boolean accept(File file) {
                 if (file.isDirectory()) {
                     return true;
@@ -67,7 +67,7 @@ public class FileUtil {
     	
     	/*查找后缀名*/
     	File[] subFolders = folder.listFiles(new FileFilter() {
-    		@Override
+			/* @Override */
     		public boolean accept(File file) {
     			if (file.isDirectory()) {
     				return true;

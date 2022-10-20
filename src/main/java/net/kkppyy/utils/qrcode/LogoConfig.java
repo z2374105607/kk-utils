@@ -1,9 +1,10 @@
 package net.kkppyy.utils.qrcode;
 
-import sun.font.FontDesignMetrics;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics2D;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -61,14 +62,14 @@ public class LogoConfig {
 		 * Color(128,128,128)); g2.draw(round2);// 绘制圆弧矩形
 		 */
 		Font font;
-		FontDesignMetrics metrics;
+		FontMetrics metrics;
 		if(null!=titleimage&&!titleimage.trim().isEmpty()){
 		
 		font = new Font("微软雅黑", Font.BOLD, 30);
 		// String content =
 		// "你好张凯你好张凯你好张凯你好张凯你好张凯你好张凯你好张凯你好张凯你好张凯你好张凯你好张凯你好张凯你好张凯你好张凯";
 
-		metrics = FontDesignMetrics.getMetrics(font);
+		metrics = Toolkit.getDefaultToolkit().getFontMetrics(font);;
 		int width = getWordWidth(font, title);//计算字体宽度
 		g2.setFont(font);
 		g2.setColor(Color.BLUE);
@@ -84,7 +85,7 @@ public class LogoConfig {
 		// String content =
 		// "你好张凯你好张凯你好张凯你好张凯你好张凯你好张凯你好张凯你好张凯你好张凯你好张凯你好张凯你好张凯你好张凯你好张凯";
 
-		metrics = FontDesignMetrics.getMetrics(font);
+		metrics = Toolkit.getDefaultToolkit().getFontMetrics(font);;
 		int width = getWordWidth(font, title);//计算字体宽度
 		g2.setFont(font);
 		g2.setColor(Color.BLUE);
@@ -101,7 +102,7 @@ public class LogoConfig {
 				str = intro.substring(0, 28);
 			else
 				str = intro;
-			metrics = FontDesignMetrics.getMetrics(font);
+			metrics = Toolkit.getDefaultToolkit().getFontMetrics(font);
 			g2.setFont(font);
 			g2.setColor(Color.BLUE);
 			g2.drawString(str, 0, metrics.getAscent() + 470 + j * 20);// 图片上写文字
@@ -117,7 +118,7 @@ public class LogoConfig {
 	}
 
 	public static int getWordWidth(Font font, String content) {
-		FontDesignMetrics metrics = FontDesignMetrics.getMetrics(font);
+		FontMetrics metrics = Toolkit.getDefaultToolkit().getFontMetrics(font);
 		int width = 0;
 		for (int i = 0; i < content.length(); i++) {
 			width += metrics.charWidth(content.charAt(i));

@@ -18,8 +18,6 @@ public class QRcode {
 	 * @throws IOException
 	 * @throws WriterException
 	 */
-	
-	
 	public static void Encode_QR_CODE(String path,String outPath,String login,String titleimage,String title,String intro) throws IOException, WriterException{
 		String contents = path; // 二维码内容
 		int width = 430; // 二维码图片宽度 300 

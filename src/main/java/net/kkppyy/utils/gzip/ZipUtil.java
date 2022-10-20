@@ -9,9 +9,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 
 /**
  * 压缩或解压zip：
@@ -207,8 +204,8 @@ public class ZipUtil {
 	}
 
 	public static void main(String[] args) {
-		String zipPath = "D:\\简单模型.rebim";
-		String descDir = "D:\\jiadan";
+		String zipPath = "K:\\rebim文件\\04.望哥透明度1.rebim";
+		String descDir = "K:\\jiadan";
 		upzipFile(zipPath, descDir);
 
 	}
