@@ -95,4 +95,74 @@ public class ZipUtilByte {
 		}
 		return null;
 	}
+	/**
+	 * 对.zip文件进行解压缩,获取文件名称，不实际解压文件
+	 * 
+	 * @param zipFile
+	 *            解压缩文件
+	 * @param descDir
+	 *            压缩的目标地址，如：D:\\测试 或 /mnt/d/测试
+	 * @param isnewname true 解压文件使用压缩包名称 false 使用本来名称
+	 * @return
+	 */
+	public static Map<String, byte[]> upzipFileName(byte[] bytes) {
+		Map<String, byte[]> result = new HashMap<String, byte[]>();
+		try {
+			ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+			ZipInputStream zip = new ZipInputStream(bis);
+			while (true) {
+				ZipEntry entry = zip.getNextEntry();
+				if (null == entry) {
+					break;
+				}
+				String zipFileName = entry.getName().replaceAll("\\\\", "/");
+				result.put(zipFileName, zipFileName.getBytes());
+			}
+			zip.close();
+			return result;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return null;
+	}
+	/**
+	 * 对.zip文件进行解压缩,根据文件名称解压实际文件
+	 * 
+	 * @param zipFile
+	 *            解压缩文件
+	 * @param descDir
+	 *            压缩的目标地址，如：D:\\测试 或 /mnt/d/测试
+	 * @param isnewname true 解压文件使用压缩包名称 false 使用本来名称
+	 * @return
+	 */
+	public static byte[] upzipFileByte(byte[] bytes, String pathName) {
+		byte[] result = null;
+		try {
+			ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+			ZipInputStream zip = new ZipInputStream(bis);
+			while (true) {
+				ZipEntry entry = zip.getNextEntry();
+				if (null == entry) {
+					break;
+				}
+				String zipFileName = entry.getName().replaceAll("\\\\", "/");
+				if (pathName.equals(zipFileName)) {
+					byte[] buf = new byte[1024];
+					int num = -1;
+					ByteArrayOutputStream baos = new ByteArrayOutputStream();
+					while ((num = zip.read(buf, 0, buf.length)) != -1) {
+						baos.write(buf, 0, num);
+					}
+					result = baos.toByteArray();
+					baos.flush();
+					baos.close();
+				}
+			}
+			zip.close();
+			return result;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return null;
+	}
 }

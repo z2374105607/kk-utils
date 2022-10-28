@@ -31,6 +31,23 @@ public class ZipUtilByteTest {
 		}*/
 	}
 	@Test
+	public void upzipFileByteTest() {
+		byte[] bytes = ReadbytesUtil.readFromByteFile("G:/filemanage/test/四个小桌子.rebim");
+		byte[] camera = ZipUtilByte.upzipFileByte(bytes, "camera.json");
+		String cameraStr=null;
+		cameraStr = new String(camera);
+		System.out.println("cameraStr:"+cameraStr);
+	}
+	@Test
+	public void upzipFileNameTest() {
+		byte[] bytes = ReadbytesUtil.readFromByteFile("G:/filemanage/test/四个小桌子.rebim");
+		Map<String, byte[]> map = ZipUtilByte.upzipFileName(bytes);
+		byte[] camera =map.get("camera.json");
+		String cameraStr=null;
+		cameraStr = new String(camera);
+		System.out.println("cameraStr:"+cameraStr);
+	}
+	@Test
 	public void byteToZipTest(){
 		Map<String,byte[]> listbytes=new HashMap<String,byte[]>();
 		listbytes.put("hello1","hello1".getBytes());

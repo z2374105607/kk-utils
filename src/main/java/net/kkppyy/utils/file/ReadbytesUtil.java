@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+
+import net.kkppyy.utils.memory.RuntimeRate;
 /**
  * 
  * <p>Title:ReadbytesUtil</p>
@@ -19,10 +21,12 @@ import java.io.InputStream;
 public class ReadbytesUtil {
 	public static byte[] readFromByteFile(String pathname) {
 		File filename = new File(pathname);
+		FileInputStream fileInputStream=null;
 		BufferedInputStream in = null;
 		byte[] content=null;
 		try {
-			in = new BufferedInputStream(new FileInputStream(filename));
+			fileInputStream=new FileInputStream(filename);
+			in = new BufferedInputStream(fileInputStream);
 			ByteArrayOutputStream out = new ByteArrayOutputStream(1024);
 			byte[] temp = new byte[1024];
 			int size = 0;
@@ -30,7 +34,9 @@ public class ReadbytesUtil {
 				out.write(temp, 0, size);
 			}
 			in.close();
+			fileInputStream.close();
 			content = out.toByteArray();
+			out.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -38,6 +44,13 @@ public class ReadbytesUtil {
 			if (in != null) {
 				try {
 					in.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			if (fileInputStream != null) {
+				try {
+					fileInputStream.close();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
