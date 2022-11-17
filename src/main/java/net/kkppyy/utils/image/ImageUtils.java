@@ -13,8 +13,8 @@ import javax.imageio.ImageIO;
 
 public class ImageUtils {
 	public static byte[] getImageBytes(String content) {
-		int width = 512; // 二维码图片宽度 300
-		int height = 430; // 二维码图片高度300
+		int width = 512; 
+		int height = 430;
 
 		BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		Graphics2D g2 = bufferedImage.createGraphics();

@@ -1,6 +1,8 @@
 package net.kkppyy.utils.gzip;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
@@ -37,6 +39,19 @@ public class ZipUtilByteTest {
 		String cameraStr=null;
 		cameraStr = new String(camera);
 		System.out.println("cameraStr:"+cameraStr);
+	}
+	@Test
+	public void upzipListFileByteTest() {
+		byte[] bytes = ReadbytesUtil.readFromByteFile("G:/filemanage/test/四个小桌子.rebim");
+		List<String> list=new ArrayList<String>();
+		list.add("camera.json");
+		list.add("preview.jpg");
+		Map<String,byte[]> bytesList = ZipUtilByte.upzipFileByte(bytes, list);
+		for (Map.Entry<String,byte[]> entry : bytesList.entrySet()) {
+			String key = entry.getKey();
+			byte[] val = entry.getValue();
+			System.out.println(key+":"+val.length);
+		}
 	}
 	@Test
 	public void upzipFileNameTest() {

@@ -17,22 +17,40 @@ import java.io.InputStreamReader;
 public class ReadStringUtil {
 	public static String readFile(String path) {
 		BufferedReader reader = null;
+		InputStreamReader inputStreamReader =null;
+		FileInputStream fileInputStream =null;
 		String laststr = "";
 		try {
-			FileInputStream fileInputStream = new FileInputStream(path);
-			InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, "UTF-8");
+			fileInputStream = new FileInputStream(path);
+			inputStreamReader = new InputStreamReader(fileInputStream, "UTF-8");
 			reader = new BufferedReader(inputStreamReader);
 			String tempString = null;
 			while ((tempString = reader.readLine()) != null) {
 				laststr += tempString;
 			}
 			reader.close();
+			fileInputStream.close();
+			fileInputStream.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
 			if (reader != null) {
 				try {
 					reader.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			if (inputStreamReader != null) {
+				try {
+					inputStreamReader.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			if (fileInputStream != null) {
+				try {
+					fileInputStream.close();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

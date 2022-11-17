@@ -2,8 +2,9 @@ package net.kkppyy.utils.gzip;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -154,6 +155,50 @@ public class ZipUtilByte {
 						baos.write(buf, 0, num);
 					}
 					result = baos.toByteArray();
+					baos.flush();
+					baos.close();
+				}
+			}
+			zip.close();
+			return result;
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return null;
+	}
+	/**
+	 * 对.zip文件进行解压缩,根据文件名称解压实际文件
+	 * 
+	 * @param zipFile
+	 *            解压缩文件
+	 * @param descDir
+	 *            压缩的目标地址，如：D:\\测试 或 /mnt/d/测试
+	 * @param isnewname true 解压文件使用压缩包名称 false 使用本来名称
+	 * @return
+	 */
+	public static Map<String,byte[]> upzipFileByte(byte[] bytes, List<String> pathName) {
+		Map<String,byte[]> result = new HashMap<String,byte[]>();
+		Map<String,Integer> mapStr=new HashMap<String,Integer>();
+		for (String str : pathName) {
+			mapStr.put(str, 1);
+		}
+		try {
+			ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+			ZipInputStream zip = new ZipInputStream(bis);
+			while (true) {
+				ZipEntry entry = zip.getNextEntry();
+				if (null == entry) {
+					break;
+				}
+				String zipFileName = entry.getName().replaceAll("\\\\", "/");
+				if (null!=mapStr.get(zipFileName)&& mapStr.get(zipFileName)==1) {
+					byte[] buf = new byte[1024];
+					int num = -1;
+					ByteArrayOutputStream baos = new ByteArrayOutputStream();
+					while ((num = zip.read(buf, 0, buf.length)) != -1) {
+						baos.write(buf, 0, num);
+					}
+					result.put(zipFileName,baos.toByteArray());
 					baos.flush();
 					baos.close();
 				}
