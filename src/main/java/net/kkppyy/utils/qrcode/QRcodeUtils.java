@@ -75,23 +75,6 @@ public class QRcodeUtils {
 	@SuppressWarnings("restriction")
 	public static BufferedImage LogoMatrix(BufferedImage matrixImage, byte[] logoImage,String title, String desc)
 			throws IOException {
-		int titleLength=title.length();
-		double letterCount=0;
-		for(int i=0;i<titleLength;i++) {
-			String charStr=String.valueOf(title.charAt(i));
-			int byteLength=charStr.getBytes().length;
-			if(3==byteLength) {
-				letterCount++;
-				System.out.println("汉字");
-			}else if(1==byteLength) {
-				letterCount+=0.581;
-				System.out.println("英文字母");
-			}else {
-				letterCount++;
-				System.out.println("特殊字符:"+title.charAt(i));
-			}
-		}
-		System.out.println("汉字个数:"+letterCount);
 		/**
 		 * 读取二维码图片，并构建绘图对象
 		 */
