@@ -80,7 +80,7 @@
 	<build>
 		<finalName>kk-utils</finalName>
 		<plugins>
-			<!--<plugin>
+			<plugin>
 				<groupId>org.owasp</groupId>
 				<artifactId>dependency-check-maven</artifactId>
 				<version>7.1.1</version>
@@ -91,7 +91,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>-->
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>

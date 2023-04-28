@@ -29,14 +29,17 @@ public class RuntimeExeTest {
 
 	@Test
 	public void exeCmdPidTest() throws InterruptedException, IOException {
-		Process result = RuntimeExe
-				.exeCmdPid("F:\\28.UE\\U02youxi\\U02youxistream\\Windows\\U02youxi\\Binaries\\Win64\\U02youxi_ue.exe");
+		String [] cmdArray=new String[3];
+		cmdArray[0]="F:\\\\28.UE\\\\U02Artist_QuickStart\\\\Windows\\\\U02Artist_QuickStart.exe";
+		cmdArray[1]="-PixelStreamingIP=localhost";
+		cmdArray[2]="-PixelStreamingPort=8888";
+		Process result = RuntimeExe.exeCmdPid(cmdArray);
 		System.out.println(result);
 	}
 
 	@Test
 	public void exeCmdKillTest() throws InterruptedException, IOException {
-		String result = RuntimeExe.exeCmd("taskkill /pid 7840  -t  -f");
+		String result = RuntimeExe.exeCmd("taskkill /pid 27988  -t  -f");
 		System.out.println(result);
 	}
 }

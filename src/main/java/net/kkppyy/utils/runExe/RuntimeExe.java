@@ -40,7 +40,7 @@ public class RuntimeExe {
 			pb.redirectOutput(tmpFile);// 把执行结果输出。
 			pb.start().waitFor();// 等待语句执行完成，否则可能会读不到结果。
 			InputStream in = new FileInputStream(tmpFile);
-			br = new BufferedReader(new InputStreamReader(in, "utf-8"));
+			br = new BufferedReader(new InputStreamReader(in,"GBK"));
 			String line = null;
 			StringBuffer str = new StringBuffer();
 			while ((line = br.readLine()) != null) {
@@ -49,6 +49,7 @@ public class RuntimeExe {
 			br.close();
 			br = null;
 			tmpFile.delete();
+			//str.
 			return str.toString();
 		} catch (Exception e) {
 			logger.error("exeCmd执行异常：", e);
@@ -64,7 +65,7 @@ public class RuntimeExe {
 		}
 	}
 
-	public static Process exeCmdPid(String commandLine) throws IOException {
+	public static Process exeCmdPid(String... commandLine) throws IOException {
 
 		// create new process builder
 		ProcessBuilder pb = new ProcessBuilder(commandLine);
